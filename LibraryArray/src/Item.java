@@ -1,15 +1,17 @@
 
 public interface Item {
-	
-  public void title ();
-   
-  public void author ();
-  
-  public void genre ();
-  
-  public void checkout ();
-  
-  public void whoisit ();
+
+	 public String getTitle ();
+	   
+	  public String getAuthor ();
+	  
+	  public String getGenre ();
+	  
+	  public void checkout ();
+	  
+
+	  public String whoisit ();
+
 }
 
 
