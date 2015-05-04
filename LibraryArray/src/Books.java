@@ -1,6 +1,10 @@
 
 public class Books implements Item{
 
+	String title;
+	String author;
+	String genre; 
+	int price; 
 	
 	public String getTitle() {
 		
