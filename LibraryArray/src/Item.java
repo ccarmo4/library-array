@@ -1,11 +1,11 @@
 
 public interface Item {
 
-	 public String getTitle ();
+	 public String Library ();
 	   
-	  public String getAuthor ();
+	  public String Customer ();
 	  
-	  public String getGenre ();
+	  public String Book ();
 	  
 	  public void checkout ();
 	  
