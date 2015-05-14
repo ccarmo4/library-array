@@ -1,12 +1,31 @@
-package Library;
-
 public class Customer implements Person {
 
 	private long iD;
 	private String fName;
 	private String lName;
 
-	@Override
+
+	public String getFname()
+	{
+		return fName;
+	}
+	
+	public void setFname(String f)
+	{
+		fName = f;
+	}
+	
+	public String getLname()
+	{
+		return lName;
+	}
+	
+	public void setAuthor(String l)
+	{
+		lName = l;
+	}
+	
+
 	public long getID() {
 		// Will return the ID
 		return iD;
@@ -14,13 +33,13 @@ public class Customer implements Person {
 	
 	@Override
 	public void setID(long id) {
-		// TODO Auto-generated method stub
+		
 		iD = id;
 	}
 	
 	@Override
 	public void setFName(String fname) {
-		// TODO Auto-generated method stub
+		
 		fName = fname;
 	}
 	
