@@ -1,4 +1,4 @@
-package Library;
+
 
 public class Book implements Item{
 
@@ -27,6 +27,7 @@ public class Book implements Item{
 	{
 		author = a;
 	}
+	
 	
 	@Override
 	public void setCallNumber(String callNum) {
@@ -69,6 +70,36 @@ public class Book implements Item{
 	public long getCustomerID() {
 		// TODO Auto-generated method stub
 		return custID;
+	}
+
+	@Override
+	public String Library() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String Customer() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String Book() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void checkout() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String whoisit() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 
