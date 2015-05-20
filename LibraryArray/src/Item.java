@@ -1,6 +1,7 @@
-
+//sets up the interface, which contains only the method names
 public interface Item {
 
+//each method is public so it can be accessed from other classes, and each represents a different aspect of the info needed
 	 public String Library ();
 	   
 	  public String Customer ();
