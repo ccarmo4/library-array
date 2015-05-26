@@ -4,82 +4,163 @@ import java.util.Scanner;
 
 
 public class Library {
-	static int minCustomers = 100;
-	static Customer[] customers = new Customer[1];
-    static Book[] books = new Book[3];
-    
+	static int maxCustomers = 100;
+	static int lastCustomer = 0;
 	
+	static int maxBooks = 100;
+	static int lastBook = 0;
+	
+	static Customer[] customers = new Customer[maxCustomers];
+    static Book[] books = new Book[maxBooks];
+    static int answer = 0;
+    
 	//Create a scanner object each for text and numbers
-    private static Scanner fInput = new Scanner(System.in);
-	private static Scanner lInput = new Scanner(System.in);
-	private Object customer;
 	private static Scanner tInput = new Scanner(System.in);
 	private static Scanner nInput = new Scanner(System.in);
-	private Object book;
-	
 	
 	
 	public static void main(String[] args) {
 		
 		
+		//Initialize Books
 		
-		addCustomers();
+		for (int i = 0; i < books.length; i++)
+			books[i] = new Book();
 		
+		//Menu
+		menu();
 
-		for (int i = 0; i < customers.length; i++)
+		
+	}
+	
+	private static void menu()
+	{
+		//The Main Menu
+		do
 		{
-			System.out.println(customers[i].getFname() + " " + customers[i].getLname());
-		}
-		
-		
-		//Add the books
-				addBooks();
-				
-				for (int i = 0; i < books.length; i++ )
+			System.out.println("What would you like to do?");
+			System.out.println("1 display books");
+			System.out.println("2 checkout a book");
+			System.out.println("3 checkin a book");
+			System.out.println("4 add a customer");
+			System.out.println("5 add books");
+			answer = nInput.nextInt();
+			
+			if (answer == 1)
 				{
-					System.out.println(books[i].getTitle() + ", by " + books[i].getAuthor());
+				System.out.println(lastBook);
+				displayBooks();
 				}
-				
-				/*do 
-				{
-				System.out.println("What is the maximum amount of customers you expect?");
-				} while (!(Integer.parseInt(tInput.nextLine())>=minCustomers));
-				*/
+			else if (answer == 2)
+				checkout();
+			else if (answer == 3)
+				checkin();
+			else if (answer == 4)
+				addCustomer();
+			else if (answer == 5)
+				addBooks();
+					
+		}while (answer != 0);
 		
+	}
+	
+	private static int findBook()
+	{
+		int i;
+		System.out.println("Which book");
+		String t = tInput.nextLine();
+		System.out.println(lastBook);
+		for (i = 0; i < lastBook; i++)
+		{
+			if (books[i].getTitle().toLowerCase().equals(t.toLowerCase()))
+				return i;
+			System.out.println(i);
+		}
+		return -1;
+		
+	}
+	
+	private static void addCustomer()
+	{
+		System.out.println("How many books do you want to enter?");
+		int numCusts = nInput.nextInt();
+		
+		int c = 0;
+		
+		for (c = 0; c < customers.length && !customers[c].getFName().equals(""); c++)
+		{
+			
+		}
+		lastBook = c;
+		System.out.println(lastBook);
+		
+		for (int i = lastCustomer; i < numCusts+lastCustomer && i < maxCustomers; i++ )
+		{
+			System.out.println("Enter the First name");
+			customers[i].setFName(tInput.nextLine());
+			System.out.println("the Last Name?");
+			customers[i].setLName(tInput.nextLine());
+			System.out.println("ID?");
+			customers[i].setID((long)Math.random()*9999);
+			
+		}
+		lastBook = c+numCusts;
 
+	
+	
+	} 
+	
+	private static void checkout()
+	{
+		int bookI = findBook();
+		if (bookI!=-1)
+		{
+			books[bookI].checkOut(1);
+			System.out.println(books[bookI].getTitle() + " is now checked out");
+		}
+		else
+			System.out.println("The book wasn't found.");
+			
+		
+	}
+	
+	private static void checkin()
+	{
 		
 		
 	}
 	
-	private static void addCustomers()
-	{
-		for (int i = 0; i < customers.length; i++)
-		{
-			customers[i] = new Customer();
-			System.out.println("Enter your First Name");
-			customers[i].setFname(fInput.nextLine());
-			System.out.println("Enter your Last Name");
-			customers[i].setLName(lInput.nextLine());
-		}
-		
-		
-		
-	} 
-	
 	private static void addBooks()
 	{
-		for (int i = 0; i < books.length; i++ )
+		System.out.println("How many books do you want to enter?");
+		int numBooks = nInput.nextInt();
+		
+		int b = 0;
+		
+		for (b = 0; b < books.length && !books[b].getTitle().equals(""); b++)
 		{
-			books[i] = new Book();
 			
-			System.out.println("Enter a Book Name");
-			
+		}
+		lastBook = b;
+		System.out.println(lastBook);
+		
+		for (int i = lastBook; i < numBooks+lastBook && i < maxBooks; i++ )
+		{
+			System.out.println("Enter a book name");
 			books[i].setTitle(tInput.nextLine());
-			
-			System.out.println("Enter the Author's Name");
-			
+			System.out.println("the Author?");
 			books[i].setAuthor(tInput.nextLine());
 			
+		}
+		lastBook = b+numBooks;
+
+	}
+	
+	private static void displayBooks()
+	{
+		for (int i = 0; i < lastBook; i++ )
+		{
+			System.out.println(books[i].getTitle() + ", by " + books[i].getAuthor() + " " + books[i].getCheckedOut());
 		}
 		
 
