@@ -15,17 +15,17 @@ public interface Item {
 
 	public String getCallNumber();
 
-	void setCallNumber(String callNum);
+	public void setCallNumber(String callNum);
 
-	boolean checkOut(long customerID);
+	public boolean checkOut(long customerID);
 
-	void setCheckedOut(boolean checked);
+	public void setCheckedOut(boolean checked);
 
-	void setCustomerID(long customerID);
+	public void setCustomerID(long customerID);
 
-	boolean getCheckedOut();
+	public boolean getCheckedOut();
 
-	long getCustomerID();
+	public long getCustomerID();
 
 }
 
